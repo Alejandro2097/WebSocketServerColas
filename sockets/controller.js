@@ -1,13 +1,10 @@
+const TicketControl = require('../models/ticket-control');
 
-
+const ticketControl = new TicketControl();
 
 const socketController = (socket) => {
-    
-    console.log('Cliente conectado', socket.id );
 
-    socket.on('disconnect', () => {
-        console.log('Cliente desconectado', socket.id );
-    });
+    socket.on('disconnect', () => { });
 
     socket.on('enviar-mensaje', ( payload, callback ) => {
         
@@ -16,7 +13,7 @@ const socketController = (socket) => {
 
         socket.broadcast.emit('enviar-mensaje', payload );
 
-    })
+    });
 
 }
 
