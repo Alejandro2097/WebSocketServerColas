@@ -3,6 +3,7 @@ const lblEscritorio = document.querySelector('h1');
 const btnAtender    = document.querySelector('button');
 const lblTicket     = document.querySelector('small');
 const divAlerta     = document.querySelector('.alert');
+const lblPendientes = document.querySelector('#lblPendientes');
 
 const searchParams = new URLSearchParams(window.location.search);
 if(!searchParams.has('escritorio')){
@@ -29,6 +30,16 @@ socket.on('disconnect', () => {
 });
 socket.on('ultimo-ticket', (ultimo)=>{
     // lblNuevoTicket.innerText = 'Ticket ' + ultimo;
+});
+socket.on('tickets-pendientes', (todos) =>{
+    if(todos === 0){
+        lblPendientes.style.display = 'none';
+    }else{
+        lblPendientes.style.display = '';
+        lblPendientes.innerText = todos;
+        console.log(todos);
+    }
+    
 });
 
 btnAtender.addEventListener( 'click', () => {    

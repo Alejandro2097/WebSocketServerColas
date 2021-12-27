@@ -49,7 +49,7 @@ class TicketControl {
         this.guardarDB();
         return 'Ticket ' + ticket.numero;
     }
-
+   
     atenderTicket(escritorio){
         //No tenemos tickets
         if(this.tickets.length === 0){
